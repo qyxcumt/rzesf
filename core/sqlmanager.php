@@ -33,6 +33,20 @@ session_start();
 			return $rs;
 		}
 		
+		function getTableSortbyTime($table,$condition=""){
+			$str="select * from $table ";
+			if($condition!="")
+				$str.=" where".$condition;
+// 				echo $str;
+// 				die();
+			$str.=" order by time desc";
+			$st=$this->db->query($str);
+			if(!$st)
+				return false;
+				$rs=$st->fetchAll();
+				return $rs;
+		}
+		
 		function getTableCount($table,$condition=""){
 			$str="select count(*) from $table";
 			if($condition!="")
