@@ -1,0 +1,308 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family:"Microsoft Yahei";
+}
+.view{
+    width:100%;min-width:800px;
+    text-align:center;
+    background-color:transparent;
+    box-shadow:none;
+}
+.list{
+    width:100%;min-width:800px;
+    text-align:center;
+    background-color:#F5F5F5;
+    box-shadow: 0 0px 30px -10px rgba(0, 0, 0, 0.4);
+}
+table .item
+{
+    background-color:#999;
+    padding:0 5px;
+    color:#fff;
+}
+
+
+/*表格下方按钮*/
+.list button {
+        cursor:pointer;
+        outline: 0;
+        border: 0;;
+        font-size:16px;
+        line-height:40px;
+        padding:0 10px;
+        color:white;
+        background-color:transparent;
+}
+.list button:hover {
+        padding:0 20px;
+        background-color:#009DEA;
+}
+.list button.on{
+        
+        font-weight:700;
+        color:#009DEA;
+}
+.list button.on:hover{
+        color:#009DEA;
+        background-color:#E5E5E5;
+}
+.tr {
+}
+.tr:hover {
+        background-color:#EFEFEF;
+}
+.del {
+        outline: 0;
+        border: 0;
+        font-size:22px;
+        line-height:36px;
+    	line-height:36px;
+        padding:0 10px;
+        color:#DDD;
+    	background-color:transparent;
+   		text-decoration:none;
+}
+.del:hover {
+        padding:0 15px;
+    	font-size:26px;
+        color:#CC0022;
+}
+.in {
+        font-size:16px;
+        line-height:30px;;
+        padding:0 15px;
+        color:white;
+        background-color:#DDD;
+    	text-decoration:none;
+}
+.in:hover {
+    	background-color:#009DEA;
+}
+.dela {
+        outline: 0;
+        border: 0;
+        font-size:16px;
+        line-height:40px;
+        padding:0 10px;
+        color:white;
+        background-color:transparent;
+}
+.dela:hover {
+        padding:0 20px;
+        background-color:#CC0022;
+}
+
+.back{
+    	float:left;
+        outline: 0;
+        border: 0;;
+        font-size:16px;
+    	height:40px;
+    	line-height:40px;
+        padding:0 10px;
+        color:white;
+        background-color:#DDD;
+}
+.back:hover {
+        padding:0 20px;
+        background-color:#009DEA;
+}
+.upload{cursor:pointer;padding:2px 5px;background-color:#AAA;color:#fff}
+.upload:hover{background-color:#009DEA;color:#FFF}
+
+    
+    /**
+ * 隐藏默认的checkbox
+ */
+
+.checkbox input[type=checkbox] {
+	visibility: hidden;
+    width:0px;
+}
+.checkbox{
+    width: 100%;
+    height:100%;
+	margin: 0 auto;
+	position: relative;
+    }
+.checkbox label {
+	cursor: pointer;
+	position: absolute;
+    width: 100%;
+    height:100%;
+	top: 0;
+  	left: 0;
+        padding: 0 auto;
+}
+.checkbox label:after {
+	opacity: 0.1;
+	content: '';
+	position: absolute;
+    margin: 0 auto;
+	width: 12px;
+	height: 7px;
+    left: 35%;
+	background: transparent;
+	border: 5px solid #5ca8f8;
+	border-top: none;
+	border-right: none;
+ 
+	-webkit-transform: rotate(-45deg);
+	-moz-transform: rotate(-45deg);
+	-o-transform: rotate(-45deg);
+	-ms-transform: rotate(-45deg);
+	transform: rotate(-45deg);
+}
+.checkbox label:hover:after {
+	opacity: 0.5;
+}
+.checkbox input[type=checkbox]:checked + label:after{
+	opacity: 1;
+}
+
+
+    /**
+ * 隐藏默认的checkbox
+ */
+
+.chosebox input[type=checkbox] {
+    width:20%;
+    cursor:pointer;
+}
+.chosebox{
+	text-align:left;
+    padding-left:5px;
+    height:30px;
+    width:100%;
+    }
+.chosebox label {
+    height:30px;
+    line-height:30px;
+	cursor: pointer;
+}
+
+.chosebox label:hover {
+	color:#294171;
+}
+
+    /**
+ 单选框
+ * 隐藏默认的choice
+ */
+
+.choicebox input[type=radio] {
+	visibility: hidden;
+    width:0px;
+}
+.choicebox{
+    height:30px;
+    }
+.choice{
+    float:left;
+    }
+.choice label {
+    float:left;
+	cursor: pointer;
+    font-size:16px;
+    line-height:30px;
+    height:30px;
+    padding:0 20px;
+    opacity: 0.2;
+}
+
+    .choice label:hover {
+	opacity: 1;
+    padding:0 30px;
+    background-color:#E3E3E3;
+}
+ 
+    .choice input[type=radio]+label.cur{
+	opacity: 1;
+        color:white;
+        background-color:#009DEA;
+}
+
+select {
+	border:0;
+    padding-left:10px;
+    font-size:16px;
+    width:100%;
+    height:40px;
+    background-color:#DDD;
+}
+select:hover {
+	border:0;
+    background-color:#E5E5E5;
+}
+select:focus {
+	border:0;
+    background-color:#FFF;
+}
+
+
+input[type=text] {
+    float:left;
+	border:0;
+    padding:0 10px;
+    height:40px;
+    font-size:14px;
+    width:100%;
+    background-color:#DDD;
+}
+input[type=text]:hover {
+	border:0;
+    background-color:#E5E5E5;
+}
+input[type=text]:focus {
+	border:0;
+    background-color:#FFF;
+}
+input[type=password] {
+    float:left;
+	border:0;
+    padding:0 10px;
+    height:40px;
+    font-size:14px;
+    width:100%;
+    background-color:#DDD;
+}
+input[type=password]:hover {
+	border:0;
+    background-color:#E5E5E5;
+}
+input[type=password]:focus {
+	border:0;
+    background-color:#FFF;
+}
+
+
+textarea {
+	border:0;
+    padding:5px 10px;
+    font-size:14px;
+    background-color:#DDD;
+    resize: none;
+}
+textarea:hover {
+	border:0;
+    background-color:#E5E5E5;
+}
+textarea:focus {
+	border:0;
+    background-color:#FFF;
+}
+textarea.read:focus {
+	border:0;
+    background-color:#E5E5E5;
+}
+
+
+/*添加按钮*/
+    .add {float:right;height:100%;background-color:#4b525d;color:#fff;padding:0 20px;font-size:18px;font-weight:300;line-height:50px;text-decoration:none;}
+    .add:hover {background-color:#009DEA;padding:0 40px;}
+	.complete {color:#fff;background-color:#4b525d;padding:0 30px;cursor:pointer;font-size:16px;line-height:40px;outline:0;border:0;}
+	.complete:hover {background-color:#009DEA;padding:0 50px;}
+    
+    
+ .checkbox label:after, .add, .back, button, .choice label, input ,textarea, a { -ms-transition: all 0.25s; -moz-transition: all 0.25s; -webkit-transition: all 0.25s; -o-transition: all 0.25s;transition: all 0.25s;}
