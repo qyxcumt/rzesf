@@ -115,7 +115,7 @@ session_start();
 			global $checkedHouseSourcesTable;
 			$condition=" publisher = $id";
 			$db=new SQL_conn();
-			$db->getTable($checkedHouseSourcesTable,$condition);
+			$db->getTableSortbyTime($checkedHouseSourcesTable,$condition);
 			return $st;
 		}
 		
@@ -123,7 +123,7 @@ session_start();
 			global $waittingHouseSourcesTable;
 			$condition=" publisher = $id";
 			$db=new SQL_conn();
-			$st=$db->getTable($waittingHouseSourcesTable,$condition);
+			$st=$db->getTableSortbyTime($waittingHouseSourcesTable,$condition);
 			return $st;
 		}
 		
@@ -131,7 +131,7 @@ session_start();
 			global $notPassedHouseSourcesTable;
 			$condition=" publisher = $id";
 			$db=new SQL_conn();
-			$st=$db->getTable($notPassedHouseSourcesTable,$condition);
+			$st=$db->getTableSortbyTime($notPassedHouseSourcesTable,$condition);
 			return $st;
 		}
 		
@@ -139,7 +139,7 @@ session_start();
 			global $tradingHouseSourcesTable;
 			$conditoin=" publisher = $id";
 			$db=new SQL_conn();
-			$st=$db->getTable($tradingHouseSourcesTable,$conditoin);
+			$st=$db->getTableSortbyTime($tradingHouseSourcesTable,$conditoin);
 			return $st;
 		}
 		
@@ -147,7 +147,7 @@ session_start();
 			global $tradedHouseSourcesTable;
 			$conditoin=" publisher = $id";
 			$db=new SQL_conn();
-			$st=$db->getTable($tradedHouseSourcesTable,$conditoin);
+			$st=$db->getTableSortbyTime($tradedHouseSourcesTable,$conditoin);
 			return $st;
 		}
 		
@@ -155,7 +155,7 @@ session_start();
 			global $tradingHouseSourcesTable;
 			$conditoin=" buyer = $id";
 			$db=new SQL_conn();
-			$st=$db->getTable($tradingHouseSourcesTable,$conditoin);
+			$st=$db->getTableSortbyTime($tradingHouseSourcesTable,$conditoin);
 			return $st;
 		}
 		
@@ -163,7 +163,7 @@ session_start();
 			global $tradedHouseSourcesTable;
 			$conditoin=" buyer = $id";
 			$db=new SQL_conn();
-			$st=$db->getTable($tradedHouseSourcesTable,$conditoin);
+			$st=$db->getTableSortbyTime($tradedHouseSourcesTable,$conditoin);
 			return $st;
 		}
 	}
@@ -495,7 +495,8 @@ session_start();
 	}
 	
 	class HouseDataAnalyser{
-		private $POD_NO,$obligee,$region,$address,$roomcount,$hallcount,$toiletcount,$floor,$floorcount,$fitment,$price,$AOB,$linkman,$phone,$time,$area;
+		protected  $POD_NO,$obligee,$region,$address,$roomcount,$hallcount,$toiletcount;
+		protected  $floor,$floorcount,$fitment,$price,$AOB,$linkman,$phone,$time,$area,$publisher;
 		
 		function __construct($row){
 			$this->POD_NO=$row[0];
@@ -514,6 +515,7 @@ session_start();
 			$this->phone=$row[13];
 			$this->time=$row[14];
 			$this->area=$row[15];
+			$this->publisher=$row[16];
 		}
 		
 		function getPOD_NO(){
@@ -578,6 +580,91 @@ session_start();
 		
 		function getArea(){
 			return $this->area;
-		}	
+		}
+		
+		function getPublisher(){
+			return $this->publisher;
+		}
 	}
+	
+	class checkedHouseDataAnalyser extends HouseDataAnalyser{
+		private $assessor;
+		function __construct($row){
+			parent::__construct($row);
+			$this->assessor=$row[17];
+		}
+		
+		function getAssessor(){
+			return $this->assessor;
+		}
+	}
+	
+	class notPassedHouseDataAnalyser extends HouseDataAnalyser{
+		private $assessor,$id,$reason;
+		function __construct($row){
+			parent::__construct($row);
+			$this->assessor=$row[17];
+			$this->id=$row[18];
+			$this->reason=$row[19];
+		}
+		
+		function getAssessor(){
+			return $this->assessor;
+		}
+		
+		function getID(){
+			return $this->id;
+		}
+		
+		function getReason(){
+			return $this->reason;
+		}
+	}
+	
+	class tradingHouseDataAnalyer extends HouseDataAnalyser{
+		private $buyer,$assessor;
+		function __construct($row){
+			parent::__construct($row);
+			$this->buyer=$row[17];
+			$this->assessor=$row[18];
+		}
+		
+		function getBuyer(){
+			return $this->buyer;
+		}
+		
+		function getAssessor(){
+			return $this->assessor;
+		}
+	}
+	
+	class tradedHouseDataAnalyser extends HouseDataAnalyser{
+		private $buyer,$assessor,$id;
+		function __construct($row){
+			parent::__construct($row);
+			$this->buyer=$row[17];
+			$this->assessor=$row[18];
+			$this->id=$row[19];
+		}
+		
+		function getBuyer(){
+			return $this->buyer;
+		}
+		
+		function getAssessor(){
+			return $this->assessor;
+		}
+		
+		function getID(){
+			return $this->id;
+		}
+	}
+	
+	class waittingHouseDataAnalyser extends HouseDataAnalyser{
+		function __construct($row){
+			parent::__construct($row);
+		}
+	}
+	
+	
 ?>
