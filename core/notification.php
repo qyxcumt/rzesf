@@ -6,7 +6,7 @@
 		static function getNotification(){
 			global $NotificationTable;
 			$db=new SQL_conn();
-			$st=$db->getTable($NotificationTable);
+			$st=$db->getTableSortbyTime($NotificationTable);
 			return $st;
 		}
 		
@@ -15,6 +15,13 @@
 			$db=new SQL_conn();
 			$st=$db->getRecord($NotificationTable, "id", $id);
 			return $st;
+		}
+		
+		static function getNotificationCount(){
+			global $NotificationTable;
+			$db=new SQL_conn();
+			$st=$db->getTableCount($NotificationTable);
+			return $st[0][0];
 		}
 	}
 ?>
