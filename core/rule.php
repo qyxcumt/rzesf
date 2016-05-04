@@ -19,14 +19,14 @@ class notification{
 	static function getRuleCount(){
 		global $RuleTable;
 		$db=new SQL_conn();
-		$st=$db->getTableCount($RuleTable;);
+		$st=$db->getTableCount($RuleTable);
 		return $st[0][0];
 	}
 	
 	static function getRuleLimit($start,$count){
 		global $RuleTable;
 		$db=new SQL_conn();
-		$st=$db->getTableLimit($RuleTable;, $start, $count);
+		$st=$db->getTableLimit($RuleTable, $start, $count);
 		return $st;
 	}
 	
