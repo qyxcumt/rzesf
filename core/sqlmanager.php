@@ -60,8 +60,9 @@ session_start();
 			return $rs[0][0];
 		}
 		
-		function getTableLimitCondition($table,$start,$count,$condition=""){
+		function getTableLimit($table,$start,$count,$condition=""){
 			$str="select * from $table ";
+			$str.=" order by time desc ";
 			if($condition!="")
 				$str.=" where".$condition;
 			$str.=" limit $start,$count";
