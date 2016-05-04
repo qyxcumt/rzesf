@@ -1,7 +1,7 @@
 <?php
 require_once 'sqlmanager.php';
 require_once 'defines.php';
-class notification{
+class rule{
 	static function getRule(){
 		global $RuleTable;
 		$db=new SQL_conn();
