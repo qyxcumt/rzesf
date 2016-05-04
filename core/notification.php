@@ -23,5 +23,12 @@
 			$st=$db->getTableCount($NotificationTable);
 			return $st[0][0];
 		}
+		
+		static function getNotificationLimit($start,$count){
+			global $NotificationTable;
+			$db=new SQL_conn();
+			$st=$db->getTableLimit($NotificationTable, $start, $count);
+			return $st;
+		}
 	}
 ?>
