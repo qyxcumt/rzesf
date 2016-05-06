@@ -2,7 +2,9 @@
 	require_once 'browser.php';
 	session_start();
 	unset($_SESSION['headertype']);
-	require_once 'defines.php';
+	if(!isset($_SESSION['pg']))
+		$_SESSION['pg']=1;
+	require_once 'core/defines.php';
 
 	require_once 'Information.class.php';
 ?>
@@ -27,6 +29,16 @@
 <script  defer="defer">
 home()
 </script>
+<div id="HouseDiv" style="float:left; width:72%;margin:125px 10px 30px 10px;padding:10px 40px 0 40px;background-color:#F9F9F9;box-shadow:0 0 40px -20px rgba(0,0,0,0.3);" >
+	<div id="HouseTableDiv" style="margin-top:0px;color:#000;">
+
+	</div>
+</div>
+
+<div id="NotificationDiv" style="float:left; width:25%;margin:125px 10px 30px 10px;padding:10px 40px 0 40px;background-color:#F9F9F9;box-shadow:0 0 40px -20px rgba(0,0,0,0.3);">
+	<div style="margin-top:20px;color:#000;">
+	</div>
+</div>
 <?php require $_SERVER['DOCUMENT_ROOT'].'/header.php'; ?>        
 <div style='width:100%;Margin:0 auto;'><!--页面内容受此组件控制-->
 <div id='begin' class='bgs'>";
