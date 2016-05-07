@@ -6,7 +6,6 @@
 		$_SESSION['pg']=1;
 	require_once 'core/defines.php';
 
-	require_once 'Information.class.php';
 ?>
 <!DOCTYPE html>
 <html>
@@ -21,13 +20,12 @@
 <script src="js/jquery-2.2.3.min.js"></script>
 <script src="js/style.js"></script>
 <script src="ueditor/ueditor.parse.js"></script>
-<script src="js/house.js"></script>
 <script src='js/index.js'></script>
 
 </head>
 <body class="menu" >
 <script  defer="defer">
-home()
+getHouseTable()
 </script>
 <div id="HouseDiv" style="float:left; width:72%;margin:125px 10px 30px 10px;padding:10px 40px 0 40px;background-color:#F9F9F9;box-shadow:0 0 40px -20px rgba(0,0,0,0.3);" >
 	<div id="HouseTableDiv" style="margin-top:0px;color:#000;">
@@ -35,10 +33,13 @@ home()
 	</div>
 </div>
 
-<div id="NotificationDiv" style="float:left; width:25%;margin:125px 10px 30px 10px;padding:10px 40px 0 40px;background-color:#F9F9F9;box-shadow:0 0 40px -20px rgba(0,0,0,0.3);">
+<div id="InfoDiv" style="float:left; width:25%;margin:125px 10px 30px 10px;padding:10px 40px 0 40px;background-color:#F9F9F9;box-shadow:0 0 40px -20px rgba(0,0,0,0.3);">
 	<div style="margin-top:20px;color:#000;">
 	</div>
 </div>
+<script>
+getInfo()
+</script>
 <?php require $_SERVER['DOCUMENT_ROOT'].'/header.php'; ?>        
 <div style='width:100%;Margin:0 auto;'><!--页面内容受此组件控制-->
 <div id='begin' class='bgs'>";
