@@ -259,6 +259,7 @@ session_start();
 				return false;
 			}
 			
+			
 	}
 	
 	class checkedHouse extends House{
@@ -287,11 +288,6 @@ session_start();
 			$this->publisher=$st[0][16];
 			$this->assessor=$st[0][17];
 		}
-		
-		function getHouseTable($condition=""){
-			return $this->db->getTable($this->tablename,$condition);
-		}
-
 		
 		function setTrading($buyer){
 			global $tradingHouseSourcesTable;
@@ -325,6 +321,13 @@ session_start();
 			$this->db->rollBack();
 			return false;
 		}
+		
+		static function getHouseTable($start,$count,$condition=""){
+			global $checkedHouseSourcesTable;
+			$db=new SQL_conn();
+			return $db->getTableLimit($checkedHouseSourcesTable, $start, $count);
+		}
+		
 	}
 	
 	class notPassedHouse extends House{
