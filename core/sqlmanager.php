@@ -1,5 +1,5 @@
 <?php 
-session_start();
+//session_start();
 	require_once 'defines.php';
 	class SQL_conn{
 		private $db;
@@ -66,12 +66,17 @@ session_start();
 			if($condition!="")
 				$str.=" where".$condition;
 			$str.=" limit $start,$count";
-			//echo "<script>alert($str)</script>";
-			//die();
+// 			echo "<script>alert($str)</script>";
+// 			die();
 			$st=$this->db->query($str);
-			if(!$st)
+			if(!$st){
+// 				$errcode=$this->db->errorCode();
+// 				$err=$this->db->errorInfo();
+// 				echo "<script>alert(".print_r($err).")</script>";
 				return false;
+			}
 			$rs=$st->fetchAll();
+			echo "<script>alert(\"GetTable\")</script>";
 			return $rs;
 		}
 		
