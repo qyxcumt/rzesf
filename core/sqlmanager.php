@@ -76,7 +76,6 @@
 				return false;
 			}
 			$rs=$st->fetchAll();
-			echo "<script>alert(\"GetTable\")</script>";
 			return $rs;
 		}
 		
