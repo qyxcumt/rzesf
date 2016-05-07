@@ -171,15 +171,18 @@
 /*首页动态*/
 table .houselist{background-color:#eb6100;color:#FFF;padding:5px 5px;min-width:85px;text-align:right;}
 table .houselistdata{background-color:#BF8118;color:#FFF;padding:5px 5px;min-width:85px;text-align:right;}
-table .more{cursor:pointer;color:#294171;padding:0px 5px;font-size:40px;float:right;}
+table .more{cursor:pointer;color:#294171;padding:0px 5px;font-size:40px;float:right;text-decoration: none;}
 table .more:hover{background-color:#EEE;padding:0px 15px;}
 table .innote{cursor:pointer;background-color:#eb7F00;color:#fff;padding:0px 15px;float:right;}
 table .innote:hover{background-color:#eb9b00;}
 table .newstitle {cursor:pointer;font-size:20px;font-weight:500;}
 table .newstitle:hover {font-size:20px;font-weight:500;color:#eb6100}
 table .time{text-align:right;}
-table .tablelinktext{cursor:pointer;color:#000;padding:0px 5px;font-size:15px;}
+table .tablelinktext{cursor:pointer;color:#000;padding:0px 5px;font-size:15px;text-decoration: none}
 table .tablelinktext:hover{background-color:#eb9b00;}
+table .tablenolinktext{color:#000;padding:0px 5px;font-size:15px;font-size:15px;}
+table .rowlink{cursor:pointer;}
+
 dt.houseSelectordt{color:#000;padding:0px 5px;font-size:17px;float:left}
 dd.houseSelectordd{cursor:pointer;color:#294171;padding:0px 5px;font-size:17px;float:left;}
 dd.houseSelectordd:hover{background-color:#EEE;padding:0px 15px;}
