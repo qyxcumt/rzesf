@@ -19,7 +19,7 @@ if(isset($_POST['fun'])){
 function getInfo(){
 	echo "<table style='min-width:250px;width:100%;' border=0 rules=none >
 		<tr><td style=\"font-size:40px;color:#eb6100;width:55%;\">最新通知
-			<a class=\"more\" href=\"notification.php\" title=\"更多通知\">···</a></td>
+			<a class=\"more\" href=\"info.html?type=notification\" title=\"更多通知\">···</a></td>
 		</tr>";
 			$noti=new Notification();
 			$noticount=$noti->getNotificationCount();
@@ -28,7 +28,7 @@ function getInfo(){
 				for($counter=0;$counter<count($st);$counter++){
 					echo "
 						<tr>
-							<td><a class='tablelinktext'  href=\"info.html?type=&id=".$st[$counter][0]."\">".$st[$counter][4]."</a></td>
+							<td><a class='tablelinktext'  href=\"info.html?type=notification&id=".$st[$counter][0]."\">".$st[$counter][4]."</a></td>
 						</tr>";
 				}
 			}else echo "<tr><td class=\"tablenolinktext\">暂无通知</td></tr>";
@@ -37,7 +37,7 @@ function getInfo(){
 			<td><hr/></td>
 		</tr>
 		<tr><td  style=\"font-size:40px;color:#eb6100\">相关政策
-			<a class=\"more\" href=\"rule.php\" title=\"更多政策\">···</a></td>";
+			<a class=\"more\" href=\"info.html?type=rule\" title=\"更多政策\">···</a></td>";
 			$rule=new rule();
 			$noticount=$rule->getRuleCount();
 			if($noticount!=0){
