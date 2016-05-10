@@ -1,0 +1,21 @@
+<?php
+	require_once 'browser.php';
+	session_start();
+	unset($_SESSION['headertype']);
+	if(!isset($_SESSION['pg']))
+		$_SESSION['pg']=1;
+	require_once 'core/defines.php';
+
+?>
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!--meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<//手机端//meta name="viewport" content="target-densitydpi=device-dpi, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"-->
+<meta content="IE=edge" http-equiv="X-UA-Compatible">
+<title><?php echo $sitetitle ?></title>
+<link rel="shortcut icon" href="favicon.ico" >
+<link rel="stylesheet" href="css/style.css">
+<script src="js/jquery-2.2.3.min.js"></script>
+<script src="js/style.js"></script>
