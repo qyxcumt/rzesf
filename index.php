@@ -1,6 +1,5 @@
 <?php 
 require_once 'browser.php';
-require_once 'core/defines.php';
 require_once 'core/House.php';
 require_once 'core/notification.php';
 require_once 'core/rule.php';
