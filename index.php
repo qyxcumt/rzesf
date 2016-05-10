@@ -28,7 +28,7 @@ function getInfo(){
 				for($counter=0;$counter<count($st);$counter++){
 					echo "
 						<tr>
-							<td><a class='tablelinktext' href=\"notification.html?action=detail&id=".$st[$counter][0]."\">".$st[$counter][4]."</a></td>
+							<td><a class='tablelinktext'  href=\"info.html?type=&id=".$st[$counter][0]."\">".$st[$counter][4]."</a></td>
 						</tr>";
 				}
 			}else echo "<tr><td class=\"tablenolinktext\">暂无通知</td></tr>";
@@ -45,7 +45,7 @@ function getInfo(){
 				for($counter=0;$counter<count($st);$counter++){
 					echo "
 						<tr>
-							<td><a class='tablelinktext' href=\"notification.html?id=".$st[$counter][0]."\">".$st[$counter][4]."</a></td>
+							<td><a class='tablelinktext' href=\"info.html?type=rule&id=".$st[$counter][0]."\">".$st[$counter][4]."</a></td>
 						</tr>";
 				}
 			}else echo "<tr><td class=\"tablenolinktext\">暂无数据</td></tr>";
