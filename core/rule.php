@@ -19,8 +19,8 @@ class rule{
 	static function getRuleCount(){
 		global $RuleTable;
 		$db=new SQL_conn();
-		$st=$db->getTableCount($RuleTable);
-		return $st[0][0];
+		$count=$db->getTableCount($RuleTable);
+		return $count;
 	}
 	
 	static function getRuleLimit($start,$count){
