@@ -1,6 +1,6 @@
 <?php
 echo"
-		<footer id='footer' style='font-size:13px;z-index:50;width:100%;position:absolute;bottom:0;background-color:#294171'>
+		<footer id='footer' style='font-size:13px;z-index:50;width:100%;position:fixed;bottom:0;background-color:#294171'>
 		<table style='width:100%' border=0 rules=none>
 		<tr>
 		<td class='footer' style='width:50%;padding: 30px 50px;color:#CCC;' >
