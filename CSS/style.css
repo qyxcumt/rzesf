@@ -182,6 +182,9 @@ table .tablelinktext{cursor:pointer;color:#000;padding:0px 5px;font-size:15px;te
 table .tablelinktext:hover{background-color:#eb9b00;}
 table .tablenolinktext{color:#000;padding:0px 5px;font-size:15px;font-size:15px;}
 table .rowlink{cursor:pointer;}
+table .infolist{cursor:pointer;color:#092646;padding:5px 5px;min-width:85px;text-align:left;}
+table .infolist:hover{background-color:#EEE;padding:0px 15px;}
+table .infolisttime{color:#092646;padding:5px 5px;min-width:85px;text-align:right;}
 
 dt.houseSelectordt{color:#000;padding:0px 5px;font-size:17px;float:left}
 dd.houseSelectordd{cursor:pointer;color:#294171;padding:0px 5px;font-size:17px;float:left;}
