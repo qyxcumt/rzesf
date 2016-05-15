@@ -20,8 +20,8 @@
 		static function getNotificationCount(){
 			global $NotificationTable;
 			$db=new SQL_conn();
-			$st=$db->getTableCount($NotificationTable);
-			return $st[0][0];
+			$count=$db->getTableCount($NotificationTable);
+			return $count;
 		}
 		
 		static function getNotificationLimit($start,$count){
