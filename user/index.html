@@ -1,0 +1,146 @@
+<?php 
+	session_start();
+	
+	require_once $_SERVER['DOCUMENT_ROOT'].'/editbrowser.php';
+	require_once $_SERVER['DOCUMENT_ROOT'].'/core/security.php';
+	require_once $_SERVER['DOCUMENT_ROOT'].'/core/user.php';
+	
+	if(!security::checkLogin())
+		security::noLoginReLocation();
+?>
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="shortcut icon" href="favicon.ico" >  
+<title>日照市二手房交易系统</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /> 
+<!--meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<//手机端//meta name="viewport" content="target-densitydpi=device-dpi, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"-->
+<meta content="IE=edge" http-equiv="X-UA-Compatible">
+<script src="../js/jquery-2.0.3.min.js"></script>
+<link rel="stylesheet" href="../css/main.css">
+  
+</head>
+<body class="menu" style="background-color:#EEE;">
+        
+    <div class="header">
+	<div class="inner">
+        <h1 style="width:240px;background-color:#4b525d;"><p><p1>欢迎</p1><p2><?php echo $_SESSION['user'] ?></p2></p></h1>
+        <h1><p id="nowon" style="margin:0 auto;padding-left:20px;color:white;font-size:24px;line-height:70px">个人中心</p></h1>
+		<ul class="nav">
+            <li><a href="../logout.php">注销</a></li>
+		</ul>    
+	</div>
+</div>
+
+<div class="guide">
+    <div class="sidebar"  style="width:240px">
+    		<ul class="navi">
+                <li><a class="cur" href="../"  banner="系统首页">首页</a></li>
+                <li><a title="管理我发布的房源">房源管理<mark>+</mark></a>
+                     <ul class="subi">
+                         <li><a href="../house/houselist.php?type=checked" target="stage" banner="通过审核的房源">已通过审核<span id="tnote" class="total"></span></a></li>
+                         <li><a href="../house/houselist.php?type=waitting" target="stage" banner="待审核房源">待审核<span id="tnote" class="total"></span></a></li>
+                         <li><a href="../house/houselist.php?type=notpassed" target="stage" banner="未通过审核房源">未通过审核<span id="tnote" class="total"></span></a></li>
+                         <li><a href="../house/houselist.php?type=trading" target="stage" banner="正在进行交易的房源">正在交易<span id="tnote" class="total"></span></a></li>
+                         <li><a href="../house/houselist.php?type=traded" target="stage" banner="已完成交易的房源">已完成交易<span id="tnote" class="total"></span></a></li>
+                         <li><a href="../house/posthouse.php" target="stage" banner="发布新的房源">发布房源<span id="tnote" class="total"></span></a></li>
+                    </ul>
+                </li>
+                <li><a title="管理自己的二手房交易">交易管理<mark>+</mark></a>
+                     <ul class="subi">
+                        <li><a href="../deal/deallist.php?type=checked" target="stage" banner="管理我的交易">已通过审核</a></li>
+                        <li><a href="../deal/deallist.php?type=waitting" target="stage" banner="待审核交易">待审核<span id="tpro" class="total"></span></a></li>
+                        <li><a href="../deal/deallist.php>type=notpassed" target="stage" banner="未通过审核交易">未通过审核<span id="tpro" class="total"></span></a></li>
+                    </ul>
+                </li>
+                <li><a title="查看修改个人信息">个人信息<mark>+</mark></a>
+                    <ul class="subi">
+                        <li><a href="lookinformation.php" target="stage" banner="查看个人信息">查看信息<span id='ttch' class="total"></span></a></li>
+                        <li><a href="modifinformation.php" target="stage" banner="修改个人信息">修改信息<span id='tstu' class="total"></span></a></li>
+                    </ul>
+                </li>
+                <li><a title="查看消息">消息<mark>+</mark></a>
+                	<ul class="subi">
+               		 <li><a href="../message/message.php" target="stage" banner="我的消息">我的消息<span id="tpro" class="total"></span></a></li>
+                	</ul>
+                </li>
+                <li><ti><clc id="time"></clc><dte id="date"></dte></ti>
+            </li>
+		</ul>    
+    </div>
+    
+</div>
+    <div style="left:240px;position:absolute;width:82%;min-width:1080px;margin-top:70px;padding:0px;background-color:#EEE">           
+        <iframe id="stage" style="width:100%;z-index:50;min-height:575px;"  name='stage' src="default.php" frameborder=0;>             
+           </iframe>
+         </div>
+    
+<script>
+    
+ $("#stage").load(function(){
+ var bh = document.documentElement.clientHeight;//窗口范围内的页面高度
+ var bw = document.documentElement.clientWidth;//窗口范围内的页面高度
+ $(this).height(bh-80);
+ $(this).width(bw-240);
+ });
+    
+function showtime(){
+   $.getJSON("/core/time.php?"+"t="+Math.random(),function(time){
+           $('#time').html(time.time);
+           $('#date').html(time.date);  
+   });
+}
+showtime();
+function showtotal(){
+   $.getJSON("/service/total.php",function(total){
+           $('#tnote').html(total.note);
+           $('#tnews').html(total.news);
+      	   $('#ttch').html(total.teacher);
+       	   $('#tstu').html(total.student);
+       	   $('#tuser').html(total.user);
+      	   $('#tpro').html(total.project);
+      	   $('#twork').html(total.work);
+   });
+}
+showtotal();
+function clrtitle(){
+        $('#nowon').html($('#nowon').html().replace(/[0-9]*/g,""));
+    }
+setInterval("showtime();",1000);
+
+    
+$(function(){
+    $('.navi a').not('.subi a').on('click',function(){
+        if($(this).hasClass('cur')){
+			$(this).removeClass('cur');
+            $(this).parent('li').children('.subi').removeClass('cur');
+            $(this).parent('li').children('.subi').slideUp(300);
+        }
+
+        else{
+            $(this).addClass('cur');
+			$('.navi a').not('.subi a').not($(this)).removeClass('cur');
+            $(this).parent('li').children('.subi').addClass('cur');
+        	$(this).parent('li').children('.subi').slideDown(300);
+        	
+        	$('.subi').not($(this).parent('li').children('.subi')).slideUp(300);
+          	if ($(this).parent('li').children(".subi").length == 0) 
+                {
+                    $('.navi a').not($(this)).removeClass('cur');
+                    $('#nowon').html($(this).attr('banner'));
+                 }
+        }
+    }); 
+
+    $('.subi a').on('click',function(){
+            $(this).addClass('cur');
+            $('.subi a').not($(this)).removeClass('cur');
+        	$('#nowon').html($(this).attr('banner'));
+        	//showtotal();
+    }); 
+});
+
+</script> 
+</body>
+</html>
