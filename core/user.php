@@ -7,7 +7,7 @@ class user{
 		global $UserTable;
 		$db=new SQL_conn();
 		$st=$db->getRecord($UserTable, "user", $user);
-		$this->id=st[0][0];
+		$this->id=$st[0][0];
 		$this->user=$st[0][2];
 		$this->name=$st[0][3];
 		$this->ID_NO=$st[0][4];
