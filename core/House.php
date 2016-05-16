@@ -111,59 +111,111 @@ session_start();
 			return $st;
 		}
 		
-		static function getHouseTablebyPublisher($id){
+		static function getHouseTablebyPublisher($id,$start=0,$count=0){
 			global $checkedHouseSourcesTable;
 			$condition=" publisher = $id";
 			$db=new SQL_conn();
-			$db->getTableSortbyTime($checkedHouseSourcesTable,$condition);
-			return $st;
+			return $db->getTableSortbyTime($checkedHouseSourcesTable,$condition,$start,$count);
 		}
 		
-		static function getWaittingHousebyPublisher($id){
+		static function getHouseTableCountbyPublisher($id){
+			global $checkedHouseSourcesTable;
+			$condition=" publisher = $id";
+			$db=new SQL_conn();
+			return $db->getTableCount($checkedHouseSourcesTable,$condition);
+		}
+		
+		
+		
+		static function getWaittingHousebyPublisher($id,$start=0,$count=0){
 			global $waittingHouseSourcesTable;
 			$condition=" publisher = $id";
 			$db=new SQL_conn();
-			$st=$db->getTableSortbyTime($waittingHouseSourcesTable,$condition);
+			$st=$db->getTableSortbyTime($waittingHouseSourcesTable,$condition,$start,$count);
 			return $st;
 		}
 		
-		static function getnotPassedHousebyPublisher($id){
+		static function getWaittingHouseCountbyPublisher($id){
+			global $waittingHouseSourcesTable;
+			$condition=" publisher = $id";
+			$db=new SQL_conn();
+			return $db->getTableCount($waittingHouseSourcesTablee,$condition);
+		}
+		
+		static function getnotPassedHousebyPublisher($id,$start=0,$count=0){
 			global $notPassedHouseSourcesTable;
 			$condition=" publisher = $id";
 			$db=new SQL_conn();
-			$st=$db->getTableSortbyTime($notPassedHouseSourcesTable,$condition);
+			$st=$db->getTableSortbyTime($notPassedHouseSourcesTable,$condition,$start,$count);
 			return $st;
 		}
 		
-		static function getTradingHousebyPublisher($id){
+		static function getnotPassedHouseCountbyPublisher($id){
+			global $notPassedHouseSourcesTable;
+			$condition=" publisher = $id";
+			$db=new SQL_conn();
+			return $db->getTableCount($notPassedHouseSourcesTable,$condition);
+		}
+		
+		static function getTradingHousebyPublisher($id,$start=0,$count=0){
 			global $tradingHouseSourcesTable;
 			$conditoin=" publisher = $id";
 			$db=new SQL_conn();
-			$st=$db->getTableSortbyTime($tradingHouseSourcesTable,$conditoin);
+			$st=$db->getTableSortbyTime($tradingHouseSourcesTable,$conditoin,$start,$count);
 			return $st;
 		}
 		
-		static function getTradedHousebyPublisher($id){
+		static function getTradingHouseCountbyPublisher($id){
+			global $tradingHouseSourcesTable;
+			$condition=" publisher = $id";
+			$db=new SQL_conn();
+			return $db->getTableCount($tradingHouseSourcesTable,$condition);
+		}
+		
+		static function getTradedHousebyPublisher($id,$start=0,$count=0){
 			global $tradedHouseSourcesTable;
 			$conditoin=" publisher = $id";
 			$db=new SQL_conn();
-			$st=$db->getTableSortbyTime($tradedHouseSourcesTable,$conditoin);
+			$st=$db->getTableSortbyTime($tradedHouseSourcesTable,$conditoin,$start,$count);
 			return $st;
 		}
 		
-		static function getTradingHousebyBuyer($id){
+		static function getTradedHouseCountbyPublisher($id){
+			global $tradedHouseSourcesTable;
+			$condition=" publisher = $id";
+			$db=new SQL_conn();
+			return $db->getTableCount($tradednHouseSourcesTable,$condition);
+		}
+		
+		static function getTradingHousebyBuyer($id,$start=0,$count=0){
 			global $tradingHouseSourcesTable;
 			$conditoin=" buyer = $id";
 			$db=new SQL_conn();
-			$st=$db->getTableSortbyTime($tradingHouseSourcesTable,$conditoin);
+			$st=$db->getTableSortbyTime($tradingHouseSourcesTable,$conditoin,$start,$count);
 			return $st;
 		}
 		
-		static function getTradedHousebyBuyer($id){
+		static function getTradingHouseCountbyBuyer($id){
+			global $tradingHouseSourcesTable;
+			$condition=" buyer = $id";
+			$db=new SQL_conn();
+			$st=$db->getTableCount($tradingHouseSourcesTable,$condition);
+			return $st;
+		}
+		
+		static function getTradedHousebyBuyer($id,$start=0,$count=0){
 			global $tradedHouseSourcesTable;
 			$conditoin=" buyer = $id";
 			$db=new SQL_conn();
-			$st=$db->getTableSortbyTime($tradedHouseSourcesTable,$conditoin);
+			$st=$db->getTableSortbyTime($tradedHouseSourcesTable,$conditoin,$start,$count);
+			return $st;
+		}
+		
+		static function getTradedHouseCountbyBuyer($id){
+			global $tradedHouseSourcesTable;
+			$condition=" buyer = $id";
+			$db=new SQL_conn();
+			$st=$db->getTableCount($tradedHouseSourcesTable,$condition);
 			return $st;
 		}
 	}
