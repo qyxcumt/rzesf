@@ -139,7 +139,7 @@ session_start();
 			global $waittingHouseSourcesTable;
 			$condition=" publisher = $id";
 			$db=new SQL_conn();
-			return $db->getTableCount($waittingHouseSourcesTablee,$condition);
+			return $db->getTableCount($waittingHouseSourcesTable,$condition);
 		}
 		
 		static function getnotPassedHousebyPublisher($id,$start=0,$count=0){
@@ -184,7 +184,7 @@ session_start();
 			global $tradedHouseSourcesTable;
 			$condition=" publisher = $id";
 			$db=new SQL_conn();
-			return $db->getTableCount($tradednHouseSourcesTable,$condition);
+			return $db->getTableCount($tradedHouseSourcesTable,$condition);
 		}
 		
 		static function getTradingHousebyBuyer($id,$start=0,$count=0){
