@@ -33,24 +33,26 @@
 			return $rs;
 		}
 		
-		function getTableSortbyTime($table,$condition=""){
+		function getTableSortbyTime($table,$condition="",$start=0,$count=0){
 			$str="select * from $table ";
 			if($condition!="")
 				$str.=" where".$condition;
 // 				echo $str;
 // 				die();
 			$str.=" order by time desc";
+			if($count!=0)
+				$str=$str." limit ".$start.",".$count;
 			$st=$this->db->query($str);
 			if(!$st)
 				return false;
-				$rs=$st->fetchAll();
-				return $rs;
+			$rs=$st->fetchAll();
+			return $rs;
 		}
 		
 		function getTableCount($table,$condition=""){
 			$str="select count(*) from $table";
 			if($condition!="")
-				$str.=" where".$condition;
+				$str.=" where ".$condition;
 			//echo "<script>alert($str)</script>";
 			//die();
 			$st=$this->db->query($str);
@@ -80,16 +82,16 @@
 		}
 		
 		function getRecord($table,$field,$data){
-			$str="select * from $table where $field=?";
-			$stmt=$this->db->prepare($str);
-			$exeres = $stmt->execute(array($data));
-			if($exeres){
-				$st=$stmt->fetchAll();
-				if(!$st)
-					return false;
-				return $st;
-			}
-			return false;
+			$str="select * from $table where $field=\"$data\"";
+			$st=$this->db->query($str);
+			
+// 			echo $str;
+// 			die();
+			
+			if(!$st)
+				return false;
+			$rs=$st->fetchAll();
+			return $rs;
 		}
 		
 		function getRecordLock($table,$field,$data){
