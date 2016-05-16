@@ -22,6 +22,102 @@ class deal{
 	function getPOD_NO(){
 		return $this->POD_NO;
 	}
+	
+	static function getWattiongDealCountbySeller($id){
+		global $waittingDealTable;
+		$condition=" seller = $id ";
+		$db=new SQL_conn();
+		$st=$db->getTableCount($waittingDealTable,$condition);
+		return $st;
+	}
+	
+	static function getDealCountbySeller($id){
+		global $checkedDealTable;
+		$condition=" seller = $id";
+		$db=new SQL_conn();
+		$st=$db->getTableCount($checkedDealTable,$condition);
+		return $st;
+	}
+	
+	static function getnotPassedDealCountbySeller($id){
+		global $notPassedDealTable;
+		$condition=" seller = $id";
+		$db=new SQL_conn();
+		$st=$db->getTableCount($notPassedDealTable,$condition);
+		return $st;
+	}
+	
+	static function getWattiongDealCountbyBuyer($id){
+		global $waittingDealTable;
+		$condition=" buyer = $id ";
+		$db=new SQL_conn();
+		$st=$db->getTableCount($waittingDealTable,$condition);
+		return $st;
+	}
+	
+	static function getDealCountbyBuyer($id){
+		global $checkedDealTable;
+		$condition=" buyer = $id";
+		$db=new SQL_conn();
+		$st=$db->getTableCount($checkedDealTable,$condition);
+		return $st;
+	}
+	
+	static function getnotPassedDealCountbyBuyer($id){
+		global $notPassedDealTable;
+		$condition=" buyer = $id";
+		$db=new SQL_conn();
+		$st=$db->getTableCount($notPassedDealTable,$condition);
+		return $st;
+	}
+	
+	static function getWattingDealbySeller($id,$start=0,$count=0){
+		global $waittingDealTable;
+		$condition=" seller = $id";
+		$db=new SQL_conn();
+		$st=$db->getTableSortbyTime($waittingDealTable,$condition,$start,$count);
+		return $st;
+	}
+	
+	static function getWattingDealbyBuyer($id,$start=0,$count=0){
+		global $waittingDealTable;
+		$condition=" buyer = $id";
+		$db=new SQL_conn();
+		$st=$db->getTableSortbyTime($waittingDealTable,$condition,$start,$count);
+		return $st;
+	}
+	
+	static function getDealbySeller($id,$start=0,$count=0){
+		global $checkedDealTable;
+		$condition=" seller = $id";
+		$db=new SQL_conn();
+		$st=$db->getTableSortbyTime($checkedDealTable,$condition,$start,$count);
+		return $st;
+	}
+	
+	static function getDealbyBuyer($id,$start=0,$count=0){
+		global $checkedDealTable;
+		$condition=" buyer = $id";
+		$db=new SQL_conn();
+		$st=$db->getTableSortbyTime($checkedDealTable,$condition,$start,$count);
+		return $st;
+	}
+	
+	static function getnotPassedDealbySeller($id,$start=0,$count=0){
+		global $notPassedDealTable;
+		$condition=" seller = $id";
+		$db=new SQL_conn();
+		$st=$db->getTableSortbyTime($notPassedDealTable,$condition,$start,$count);
+		return $st;
+	}
+	
+	static function getnotPassedDealbyBuyer($id,$start=0,$count=0){
+		global $notPassedDealTable;
+		$condition=" buyer = $id";
+		$db=new SQL_conn();
+		$st=$db->getTableSortbyTime($notPassedDealTable,$condition,$start,$count);
+		return $st;
+	}
 }
 
 class waittingDeal extends deal{
@@ -98,12 +194,6 @@ class waittingDeal extends deal{
 		));
 	}
 	
-	static function getWattingDeal($id){
-		global $waittingDealTable;
-		$db=new SQL_conn();
-		$st=$db->getTable($waittingDealTable," seller=$id or buyer=$id");
-		return $st;
-	}
 }
 
 class waittingDealAnalysor{
