@@ -1,5 +1,4 @@
 <?php
-session_start();
 class security{
 	static function checkUserPrivilege(){
 		if(isset($_SESSION['user'])&&$_SESSION['privilege']==1)
@@ -17,6 +16,18 @@ class security{
 		if(isset($_SESSION['user'])&&$_SESSION['privilege']==0)
 			return true;
 			return false;
+	}
+	
+	static function checkLogin(){
+		if(empty($_SESSION['user']))
+			return false;
+		return true;
+	}
+	
+	static function noLoginReLocation(){
+		echo  "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\" />";
+		echo "<script>top.location.href='/';</script>";
+		exit();
 	}
 }
 ?>
