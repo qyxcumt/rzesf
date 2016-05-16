@@ -23,7 +23,7 @@ class deal{
 		return $this->POD_NO;
 	}
 	
-	static function getWattiongDealCountbySeller($id){
+	static function getWattingDealCountbySeller($id){
 		global $waittingDealTable;
 		$condition=" seller = $id ";
 		$db=new SQL_conn();
@@ -47,7 +47,7 @@ class deal{
 		return $st;
 	}
 	
-	static function getWattiongDealCountbyBuyer($id){
+	static function getWattingDealCountbyBuyer($id){
 		global $waittingDealTable;
 		$condition=" buyer = $id ";
 		$db=new SQL_conn();
