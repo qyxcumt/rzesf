@@ -18,47 +18,56 @@ session_start();
   	  	$(".AjaxAdd").remove();
   	  	var ret=true;
   	  	if(document.forms[0].validate.value==""){
-  	  	  	$("#validate").before("<div class=\"AjaxAdd\" type='text' id='alertcontent' style='margin:10px 0px 0px 0px;'>我是验证码，请不要无视我::>_<::</div>");
+  	  	  	$("#validate").before("<div class=\"AjaxAdd\" type='text' id='alertcontent' style='margin:10px 0px 0px 0px;'>请输入验证码</div>");
   	  	  	ret=false;
   	  	}
   	  	if(document.forms[0].username.value==""){
-  	  	  	$("#username").before("<div class=\"AjaxAdd\" type='text' id='alertcontent' style='margin:10px 0px 0px 0px;'>要当无名人士嘛╮(￣▽￣)╭</div>");
+  	  	  	$("#username").before("<div class=\"AjaxAdd\" type='text' id='alertcontent' style='margin:10px 0px 0px 0px;'>请输入用户名</div>");
   	  	  	ret=false;
   	  	}else {
   	  	  	if(document.forms[0].username.value.length>64){
-  	  	  		$("#username").before("<div class=\"AjaxAdd\" type='text' id='alertcontent' style='margin:10px 0px 0px 0px;'>不行不行，太长了记不住>_<</div>");
+  	  	  		$("#username").before("<div class=\"AjaxAdd\" type='text' id='alertcontent' style='margin:10px 0px 0px 0px;'>用户名应小于64个字符</div>");
   	  	  		ret=false;
   	  	  	}else{
   	  	  	  	var filter= /^[0-9a-zA-Z]*$/g;
   	  	  	  	if(!filter.test(document.forms[0].username.value)){
-  	  	  	  		$("#username").before("<div class=\"AjaxAdd\" type='text' id='alertcontent' style='margin:10px 0px 0px 0px;'>我只认识数字和字母诶…(⊙_⊙;)…</div>");
+  	  	  	  		$("#username").before("<div class=\"AjaxAdd\" type='text' id='alertcontent' style='margin:10px 0px 0px 0px;'>用户名由英文字符和数字组成</div>");
+  	  	  	  		ret=false;
   	  	  	  	}
   	  	  	}
   	  	}
+  	  	if(document.forms[0].password.value==""){
+  	  	  	$("#password").before("<div type='text' class=\"AjaxAdd\" style='margin:10px 0px 0px 0px;'>请输入密码</div>");
+  	  	  	ret=false;
+  	  	}
+  	  	if(document.forms[0].password_confirm.value==""){
+  	  	  	$("#password_confirm").before("<div type='text' class=\"AjaxAdd\" style='margin:10px 0px 0px 0px;'>请确认密码</div>");
+  	  	  	ret=false;
+  	  	}
 		if(document.forms[0].password.value!=document.forms[0].password_confirm.value){
-			$("#password").before("<div type='text' class=\"AjaxAdd\" style='margin:10px 0px 0px 0px;'>你想要两个密码么？要专一~╰_╯~</div>");
+			$("#password").before("<div type='text' class=\"AjaxAdd\" style='margin:10px 0px 0px 0px;'>两次输入的密码不一致</div>");
 			ret=false;
 		}
 		if(document.forms[0].name.value==""){
-			$("#name").before("<div type='text' class=\"AjaxAdd\" style='margin:10px 0px 0px 0px;'>哇塞，速度围观无名氏=@~@=</div>");
+			$("#name").before("<div type='text' class=\"AjaxAdd\" style='margin:10px 0px 0px 0px;'>请输入姓名</div>");
 			ret=false;
 		}
 		if(document.forms[0].ID_NO.value==""){
-			$("#ID_NO").before("<div type='text' class=\"AjaxAdd\" style='margin:10px 0px 0px 0px;'>呀？难道你就是传说中没有身份……证的人嘛O口O!</div>");
+			$("#ID_NO").before("<div type='text' class=\"AjaxAdd\" style='margin:10px 0px 0px 0px;'>请输入身份证号</div>");
 			ret=false;
 		}
 		if(document.forms[0].phone.value==""){
-			$("#phone").before("<div type='text' class=\"AjaxAdd\" style='margin:10px 0px 0px 0px;'>求求你，告诉我手机号好么~*.*~</div>");
+			$("#phone").before("<div type='text' class=\"AjaxAdd\" style='margin:10px 0px 0px 0px;'>请输入手机号</div>");
 			ret=false;
 		}
 
 		var mailfilter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
 		if(document.forms[0].mail.value!=""&&!mailfilter.test(document.forms[0].mail.value)){
-			$("#mail").before("<div type='text' class=\"AjaxAdd\" style='margin:10px 0px 0px 0px;'>我读书少，你不要骗我，邮箱格式不是辣样子啦[{(>_<)]}</div>");
+			$("#mail").before("<div type='text' class=\"AjaxAdd\" style='margin:10px 0px 0px 0px;'>邮箱格式错误</div>");
 			ret=false;
 		}
 		if(document.forms[0].QQ.value!=""&&((document.forms[0].QQ.value.length<6||document.forms[0].QQ.value.length>13)||!isNaN(document.forms[0].QQ.value))){
-			$("#QQ").before("<div type='text' class=\"AjaxAdd\" style='margin:10px 0px 0px 0px;'>QQ号是辣样子嘛←_←</div>");
+			$("#QQ").before("<div type='text' class=\"AjaxAdd\" style='margin:10px 0px 0px 0px;'>QQ号格式错误</div>");
 			ret=false;
 		}
 		document.forms[0].md5password.value=hex_md5(document.forms[0].password.value);

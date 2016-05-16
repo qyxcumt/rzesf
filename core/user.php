@@ -1,5 +1,4 @@
 <?php
-session_start();
 require_once 'sqlmanager.php';
 require_once 'defines.php';
 class user{
@@ -74,6 +73,23 @@ class user{
 		$db=new SQL_conn();
 		$st=$db->getRecord($UserTable, "user", $user);
 		if(count($st)==0)
+			return true;
+		return false;
+	}
+	
+	static function checkID_NO($id){
+		global $UserTable;
+		$db=new SQL_conn();
+		$st=$db->getRecord($UserTable, "ID_NO", $id);
+		if(count($st)==0)
+			return true;
+		return false;
+	}
+	
+	static function adduser($param){
+		global $UserTable;
+		$db=new SQL_conn();
+		if($db->insertRecord($UserTable, $param))
 			return true;
 		return false;
 	}
