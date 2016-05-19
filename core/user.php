@@ -8,7 +8,7 @@ class user{
 		$db=new SQL_conn();
 		$st=$db->getRecord($UserTable, "user", $user);
 		$this->id=$st[0][0];
-		$this->user=$st[0][2];
+		$this->user=$st[0][1];
 		$this->name=$st[0][3];
 		$this->ID_NO=$st[0][4];
 		$this->mail=$st[0][5];
@@ -55,6 +55,13 @@ class user{
 		if(!$db->updateRecord($UserTable, $param, "id=$this->id"))
 			return true;
 		return false;
+	}
+	
+	static function getUserName($id){
+		global $UserTable;
+		$db=new SQL_conn();
+		$st=$db->getRecord($UserTable, "id", $id);
+		return $st[0][3];
 	}
 	
 	static function verifyUser($user,$passwd){
@@ -123,7 +130,7 @@ class zgUser{
 		global $zgUserTable;
 		$db=new SQL_conn();
 		$st=$db->getRecord($zgUserTable, "user", $user);
-		if($count($st)==0){
+		if(count($st)==0){
 			return false;
 		}
 		if($passwd==$st[0][2])

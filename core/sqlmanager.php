@@ -144,7 +144,9 @@
 		}
 		
 		function deleteRecord($table,$condition){
-			$str="delete form $table where $condition";
+			$str="delete from $table where $condition";
+			echo $str;
+// 			die();
 			$st=$this->db->query($str);
 			if(!$st)
 				return false;

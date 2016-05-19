@@ -24,6 +24,12 @@ class security{
 		return true;
 	}
 	
+	static function checkzgLogin(){
+		if(empty($_SESSION['zguser']))
+			return false;
+		return true;
+	}
+	
 	static function noLoginReLocation(){
 		echo  "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\" />";
 		echo "<script>top.location.href='/';</script>";

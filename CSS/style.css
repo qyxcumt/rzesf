@@ -75,6 +75,8 @@
 .menu .small .nav a.btn img {height:36px;}
 .menu .small .item .show {padding:10px 10px;height:140px;}    
 
+
+
     
 .menu .header, .menu .inner, .menu .item, .menu .nav, .menu a, .menu h1, .menu img, .menu p1, .menu p2, .menu li, .menu input { -ms-transition: all 1s; -moz-transition: all 1s; -webkit-transition: all 1s; -o-transition: all 1s;transition: all 0.75s;}
 
@@ -185,6 +187,7 @@ table .rowlink{cursor:pointer;}
 table .infolist{cursor:pointer;color:#092646;padding:5px 5px;min-width:85px;text-align:left;}
 table .infolist:hover{background-color:#EEE;padding:0px 15px;}
 table .infolisttime{color:#092646;padding:5px 5px;min-width:85px;text-align:right;}
+
 
 dt.houseSelectordt{color:#000;padding:0px 5px;font-size:17px;float:left}
 dd.houseSelectordd{cursor:pointer;color:#294171;padding:0px 5px;font-size:17px;float:left;}
@@ -313,7 +316,7 @@ input.textbox {
   width: 250px;
   border-radius: 0px;/*圆角*/
   padding: 10px 15px;
-  margin: 10px auto 0 auto;
+  margin: 5px auto 0 auto;
   display: block;
   text-align: center;
   font-size: 18px;
@@ -327,6 +330,34 @@ input:hover.textbox {/*鼠标经过*/
   background-color: rgba(255, 235, 180, 0.4);
 }
 input:focus.textbox{/*点击后展开*/
+  background-color: white;
+  width: 300px;
+  color: #294171;
+}
+
+input.housepost {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  outline: 0;
+  border: 1px solid rgba(41, 65, 113, 0.4);
+  
+  width: 250px;
+  border-radius: 0px;/*圆角*/
+  padding: 10px 15px;
+  margin: 15px auto 0 auto;
+  display: block;
+  text-align: center;
+  font-size: 18px;
+  color:white;
+  -webkit-transition-duration: 0.25s;
+          transition-duration: 0.25s;
+  font-weight: 300;
+}
+input:hover.housepost {/*鼠标经过*/
+  background-color: rgba(255, 235, 180, 0.4);
+}
+input:focus.housepost{/*点击后展开*/
   background-color: white;
   width: 300px;
   color: #294171;

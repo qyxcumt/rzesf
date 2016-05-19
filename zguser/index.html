@@ -5,7 +5,7 @@
 	require_once $_SERVER['DOCUMENT_ROOT'].'/core/security.php';
 	require_once $_SERVER['DOCUMENT_ROOT'].'/core/user.php';
 	
-	if(!security::checkLogin())
+	if(!security::checkzgLogin())
 		security::noLoginReLocation();
 ?>
 <!DOCTYPE html>
@@ -25,7 +25,7 @@
         
     <div class="header">
 	<div class="inner">
-        <h1 style="width:240px;background-color:#4b525d;"><p><p1>欢迎</p1><p2><?php echo $_SESSION['user'] ?></p2></p></h1>
+        <h1 style="width:240px;background-color:#4b525d;"><p><p1>欢迎</p1><p2><?php echo $_SESSION['zguser'] ?></p2></p></h1>
         <h1><p id="nowon" style="margin:0 auto;padding-left:20px;color:white;font-size:24px;line-height:70px">个人中心</p></h1>
 		<ul class="nav">
             <li><a href="../logout.php">注销</a></li>
@@ -36,34 +36,11 @@
 <div class="guide">
     <div class="sidebar"  style="width:240px">
     		<ul class="navi">
-                <li><a class="cur" href="../"  banner="系统首页">首页</a></li>
-                <li><a title="管理我发布的房源">房源管理<mark>+</mark></a>
-                     <ul class="subi">
-                         <li><a href="../house/houselist.php?type=checked" target="stage" banner="通过审核的房源">已通过审核<span id="tnote" class="total"></span></a></li>
-                         <li><a href="../house/houselist.php?type=waitting" target="stage" banner="待审核房源">待审核<span id="tnote" class="total"></span></a></li>
-                         <li><a href="../house/houselist.php?type=notpassed" target="stage" banner="未通过审核房源">未通过审核<span id="tnote" class="total"></span></a></li>
-                         <li><a href="../house/houselist.php?type=trading" target="stage" banner="正在进行交易的房源">正在交易<span id="tnote" class="total"></span></a></li>
-                         <li><a href="../house/houselist.php?type=traded" target="stage" banner="已完成交易的房源">已完成交易<span id="tnote" class="total"></span></a></li>
-                         <li><a href="../house/posthouse.php" target="stage" banner="发布新的房源">发布房源<span id="tnote" class="total"></span></a></li>
-                    </ul>
-                </li>
-                <li><a title="管理自己的二手房交易">交易管理<mark>+</mark></a>
-                     <ul class="subi">
-                        <li><a href="../deal/deallist.php?type=checked" target="stage" banner="管理我的交易">已通过审核</a></li>
-                        <li><a href="../deal/deallist.php?type=waitting" target="stage" banner="待审核交易">待审核<span id="tpro" class="total"></span></a></li>
-                        <li><a href="../deal/deallist.php?type=notpassed" target="stage" banner="未通过审核交易">未通过审核<span id="tpro" class="total"></span></a></li>
-                    </ul>
-                </li>
-                <li><a title="查看修改个人信息">个人信息<mark>+</mark></a>
+                <li><a title="查看修改个人信息">审核<mark>+</mark></a>
                     <ul class="subi">
-                        <li><a href="lookinformation.php" target="stage" banner="查看个人信息">查看信息<span id='ttch' class="total"></span></a></li>
-                        <li><a href="modifinformation.php" target="stage" banner="修改个人信息">修改信息<span id='tstu' class="total"></span></a></li>
+                        <li><a href="checkhouse.php" target="stage" banner="审核房源">审核房源<span id='ttch' class="total"></span></a></li>
+                        <li><a href="checkdeal.php" target="stage" banner="审核交易">审核交易<span id='tstu' class="total"></span></a></li>
                     </ul>
-                </li>
-                <li><a title="查看消息">消息<mark>+</mark></a>
-                	<ul class="subi">
-               		 <li><a href="../message/message.php" target="stage" banner="我的消息">我的消息<span id="tpro" class="total"></span></a></li>
-                	</ul>
                 </li>
                 <li><ti><clc id="time"></clc><dte id="date"></dte></ti>
             </li>

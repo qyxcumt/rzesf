@@ -142,6 +142,12 @@ session_start();
 			return $db->getTableCount($waittingHouseSourcesTable,$condition);
 		}
 		
+		static function getWaittingHouseCount(){
+			global $waittingHouseSourcesTable;
+			$db=new SQL_conn();
+			return $db->getTableCount($waittingHouseSourcesTable);
+		}
+		
 		static function getnotPassedHousebyPublisher($id,$start=0,$count=0){
 			global $notPassedHouseSourcesTable;
 			$condition=" publisher = $id";
@@ -207,7 +213,6 @@ session_start();
 			global $tradedHouseSourcesTable;
 			$conditoin=" buyer = $id";
 			$db=new SQL_conn();
-			$st=$db->getTableSortbyTime($tradedHouseSourcesTable,$conditoin,$start,$count);
 			return $st;
 		}
 		
@@ -283,7 +288,7 @@ session_start();
 				$this->db->begin();
 				if($this->deleteHouse()){
 					if($this->db->insertRecord($notPassedHouseSourcesTable, array(
-						"POD_NO"=>$this->PDO_NO,
+						"POD_NO"=>$this->POD_NO,
 						"obligee"=>$this->obligee,
 						"region"=>$this->region,
 						"address"=>$this->address,
@@ -309,6 +314,28 @@ session_start();
 				}
 				$this->db->rollBack();
 				return false;
+			}
+			
+			static function addHouse($POD,$obligee,$region,$address,$area,$room,$hall,$toilet,$floor,$floor_count,$fitment,$price,$AOB,$linkman,$phone,$id){
+				global $waittingHouseSourcesTable;
+				$db=new SQL_conn();
+				$db->insertRecord($waittingHouseSourcesTable, array(
+						"POD_NO"=>$POD,
+						"obligee"=>$obligee,
+						"region"=>$region,
+						"address"=>$address,
+						"roomcount"=>$room,
+						"hallcount"=>$hall,
+						"toiletcount"=>$toilet,
+						"floor"=>$floor,
+						"floor_count"=>$floor_count,
+						"fitment"=>$fitment,
+						"price"=>$price,
+						"AOB"=>$AOB,
+						"linkman"=>$linkman,
+						"phone"=>$phone,
+						"area"=>$area,
+						"publisher"=>$id));
 			}
 			
 			

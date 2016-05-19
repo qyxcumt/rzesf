@@ -31,6 +31,13 @@ class deal{
 		return $st;
 	}
 	
+	static function getAllWattingDealCount(){
+		global $waittingDealTable;
+		$db=new SQL_conn();
+		$st=$db->getTableCount($waittingDealTable);
+		return $st;
+	}
+	
 	static function getDealCountbySeller($id){
 		global $checkedDealTable;
 		$condition=" seller = $id";
@@ -71,6 +78,30 @@ class deal{
 		return $st;
 	}
 	
+	static function getWattingDealCount($id){
+		global $waittingDealTable;
+		$condition=" seller = $id or buyer= $id";
+		$db=new SQL_conn();
+		$st=$db->getTableCount($waittingDealTable,$condition);
+		return $st;
+	}
+	
+	static function getDealCount($id){
+		global $checkedDealTable;
+		$condition=" seller = $id or buyer= $id";
+		$db=new SQL_conn();
+		$st=$db->getTableCount($checkedDealTable,$condition);
+		return $st;
+	}
+	
+	static function getnotpassedDealCount($id){
+		global $notPassedDealTable;
+		$condition=" seller = $id or buyer= $id";
+		$db=new SQL_conn();
+		$st=$db->getTableCount($notPassedDealTable,$condition);
+		return $st;
+	}
+	
 	static function getWattingDealbySeller($id,$start=0,$count=0){
 		global $waittingDealTable;
 		$condition=" seller = $id";
@@ -79,9 +110,19 @@ class deal{
 		return $st;
 	}
 	
+	
+	
 	static function getWattingDealbyBuyer($id,$start=0,$count=0){
 		global $waittingDealTable;
 		$condition=" buyer = $id";
+		$db=new SQL_conn();
+		$st=$db->getTableSortbyTime($waittingDealTable,$condition,$start,$count);
+		return $st;
+	}
+	
+	static function getWattingDeal($id,$start=0,$count=0){
+		global $waittingDealTable;
+		$condition=" seller = $id or buyer= $id";
 		$db=new SQL_conn();
 		$st=$db->getTableSortbyTime($waittingDealTable,$condition,$start,$count);
 		return $st;
@@ -103,6 +144,14 @@ class deal{
 		return $st;
 	}
 	
+	static function getDeal($id,$start=0,$count=0){
+		global $checkedDealTable;
+		$condition=" buyer = $id or seller= $id";
+		$db=new SQL_conn();
+		$st=$db->getTableSortbyTime($checkedDealTable,$condition,$start,$count);
+		return $st;
+	}
+	
 	static function getnotPassedDealbySeller($id,$start=0,$count=0){
 		global $notPassedDealTable;
 		$condition=" seller = $id";
@@ -114,6 +163,14 @@ class deal{
 	static function getnotPassedDealbyBuyer($id,$start=0,$count=0){
 		global $notPassedDealTable;
 		$condition=" buyer = $id";
+		$db=new SQL_conn();
+		$st=$db->getTableSortbyTime($notPassedDealTable,$condition,$start,$count);
+		return $st;
+	}
+	
+	static function getnotPassedDeal($id,$start=0,$count=0){
+		global $notPassedDealTable;
+		$condition=" buyer = $id or seller= $id";
 		$db=new SQL_conn();
 		$st=$db->getTableSortbyTime($notPassedDealTable,$condition,$start,$count);
 		return $st;
@@ -308,12 +365,6 @@ class notPasseddDeal extends deal{
 		return $this->reason;
 	}
 	
-	static function getnotPassedDeal($id){
-		global $notPassedDealTable;
-		$db=new SQL_conn();
-		$st=$db->getTable($notPassedDealTable," seller=$id or buyer=$id");
-		return $st;
-	}
 	
 } 
 

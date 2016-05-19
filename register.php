@@ -84,7 +84,7 @@ session_start();
  if (!empty($_GET['errno']))
  {
      switch($_GET['errno']){
-         case 1:$warning="我是验证码，请不要无视我::>_<::";break;
+         case 1:$warning="请输入验证码";break;
          case 2:$warning="用户名由字母和数字组成且小于64位";break;
          case 3:$warning="该用户名已被注册";break;
          case 4:$warning="请输入正确的身份证号";break;

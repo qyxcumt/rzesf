@@ -12,7 +12,7 @@ switch($_GET['type']){
 		break;
 	case "waitting":
 		$type="待审核房源";
-		$houseList=house::getHouseTablebyPublisher($id);
+		$houseList=house::getWaittingHousebyPublisher($id);
 		break;
 	case "notpassed":
 		$type="未通过审核房源";
