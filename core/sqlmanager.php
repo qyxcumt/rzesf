@@ -42,6 +42,8 @@
 			$str.=" order by time desc";
 			if($count!=0)
 				$str=$str." limit ".$start.",".$count;
+// 				echo $str;
+// 				die();
 			$st=$this->db->query($str);
 			if(!$st)
 				return false;
@@ -138,18 +140,28 @@
 			$str=substr($str,0,strlen($str)-1);
 			$str.=")";
 			$st=$this->db->query($str);
-			if(!$st)
+			if(!$st){
+				$errcode=$this->db->errorCode();
+				$err=$this->db->errorInfo();
+				echo "<script>alert(".print_r($err).")</script>";
 				return false;
+			}
 			return true;
 		}
 		
 		function deleteRecord($table,$condition){
 			$str="delete from $table where $condition";
-			echo $str;
+// 			echo "<script>alert($str)</script>";
+// 			die();
+// 			echo $str;
 // 			die();
 			$st=$this->db->query($str);
-			if(!$st)
+			if(!$st){
+// 				$errcode=$this->db->errorCode();
+// 				$err=$this->db->errorInfo();
+// 				echo "<script>alert(".print_r($err).")</script>";
 				return false;
+			}
 			return true;
 		}
 		

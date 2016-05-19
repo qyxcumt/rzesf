@@ -255,13 +255,13 @@ session_start();
 			$this->db->begin();
 			if($this->deleteHouse()){
 				if($this->db->insertRecord($checkedHouseSourcesTable, array(
-					"POD_NO"=>$this->PDO_NO,
+					"POD_NO"=>$this->POD_NO,
 					"obligee"=>$this->obligee,
 					"region"=>$this->region,
 					"address"=>$this->address,
-					"roomcount"=>$this->roomcount,
-					"hallcount"=>$this->hallcount,
-					"toiletcount"=>$this->toiletcount,
+					"room_count"=>$this->roomcount,
+					"hall_count"=>$this->hallcount,
+					"toilet_count"=>$this->toiletcount,
 					"floor"=>$this->floor,
 					"floor_count"=>$this->floor_count,
 					"fitment"=>$this->fitment,
@@ -287,14 +287,16 @@ session_start();
 				global $notPassedHouseSourcesTable;
 				$this->db->begin();
 				if($this->deleteHouse()){
+// 					echo "del";
+// 					die();
 					if($this->db->insertRecord($notPassedHouseSourcesTable, array(
 						"POD_NO"=>$this->POD_NO,
 						"obligee"=>$this->obligee,
 						"region"=>$this->region,
 						"address"=>$this->address,
-						"roomcount"=>$this->roomcount,
-						"hallcount"=>$this->hallcount,
-						"toiletcount"=>$this->toiletcount,
+						"room_count"=>$this->roomcount,
+						"hall_count"=>$this->hallcount,
+						"toilet_count"=>$this->toiletcount,
 						"floor"=>$this->floor,
 						"floor_count"=>$this->floor_count,
 						"fitment"=>$this->fitment,
@@ -338,6 +340,12 @@ session_start();
 						"publisher"=>$id));
 			}
 			
+			static function getFirstWatting(){
+				global $waittingHouseSourcesTable;
+				$db=new SQL_conn();
+				$rs=$db->getTableSortbyTime($waittingHouseSourcesTable,"",0,1);
+				return $rs[0];
+			}
 			
 	}
 	
@@ -513,6 +521,9 @@ session_start();
 			global $checkedHouseSourcesTable;
 			$this->db->begin();
 			if($this->deleteHouse()){
+				echo "<script>alert(\"delete\")</script>";
+				$this->db->rollBack();
+				die();
 				if($this->db->insertRecord($checkedHouseSourcesTable, array(
 						"POD_NO"=>$this->PDO_NO,
 						"obligee"=>$this->obligee,

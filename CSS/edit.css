@@ -68,6 +68,24 @@ table .item
     	font-size:26px;
         color:#CC0022;
 }
+
+.pass{
+	outline: 0;
+        border: 0;
+        font-size:22px;
+        line-height:36px;
+    	line-height:36px;
+        padding:0 10px;
+        color:#DDD;
+    	background-color:transparent;
+   		text-decoration:none;
+}
+
+.pass:hover {
+        padding:0 15px;
+    	font-size:26px;
+        color:#00CC00;
+}
 .in {
         font-size:16px;
         line-height:30px;;
